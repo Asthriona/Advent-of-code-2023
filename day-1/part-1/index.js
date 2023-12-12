@@ -1,3 +1,40 @@
+numbers = [];
+
+lines.forEach(line => {
+    const numOnly = line.replace(/[^0-9]/g, "");
+    numbers.push(numOnly);
+})
+
+// console.log(numbers)
+
+// for I am stupid. i know there is better way to do this.
+const onlyTwoNumPerArray = [];
+
+numbers.forEach(num => {
+    const numArray = num.split("");
+    if(numArray.length >= 2) {
+        onlyTwoNumPerArray.push([numArray[0], numArray[numArray.length-1]]);
+    } else if (numArray.length == 2) {
+        onlyTwoNumPerArray.push(numArray);
+    } else if (numArray.length < 2) {
+        onlyTwoNumPerArray.push([numArray[0], numArray[0]])
+    }
+});
+
+// set all the numbers together
+const allNumTogether = [];
+onlyTwoNumPerArray.forEach(num => {
+    allNumTogether.push(parseInt(num[0]+parseInt(num[1])));
+})
+console.log(allNumTogether);
+
+let total = 0;
+
+allNumTogether.forEach(num => {
+    total = num + total;
+})
+console.log(total);
+
 const lines = [
     "2qlljdqcbeight",
 "eight47srvbfive",
@@ -1000,39 +1037,3 @@ const lines = [
 "nvfive8hvdth6fgnfgh",
 "8hl5eight",
 ]
-numbers = [];
-
-lines.forEach(line => {
-    const numOnly = line.replace(/[^0-9]/g, "");
-    numbers.push(numOnly);
-})
-
-// console.log(numbers)
-
-// for I am stupid. i know there is better way to do this.
-const onlyTwoNumPerArray = [];
-
-numbers.forEach(num => {
-    const numArray = num.split("");
-    if(numArray.length >= 2) {
-        onlyTwoNumPerArray.push([numArray[0], numArray[numArray.length-1]]);
-    } else if (numArray.length == 2) {
-        onlyTwoNumPerArray.push(numArray);
-    } else if (numArray.length < 2) {
-        onlyTwoNumPerArray.push([numArray[0], numArray[0]])
-    }
-});
-
-// set all the numbers together
-const allNumTogether = [];
-onlyTwoNumPerArray.forEach(num => {
-    allNumTogether.push(parseInt(num[0]+parseInt(num[1])));
-})
-console.log(allNumTogether);
-
-let total = 0;
-
-allNumTogether.forEach(num => {
-    total = num + total;
-})
-console.log(total);
